@@ -58,7 +58,7 @@ function Projects() {
     <section id="projects" className="py-12 md:py-16 bg-slate-100">
       <div className="container mx-auto px-4">
         {/* Section Title */}
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-slate-700 mb-8">
+        <h2 className="text-xl md:text-2xl font-bold text-center text-slate-700 mb-8">
           Projects
         </h2>
 
