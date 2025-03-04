@@ -78,7 +78,7 @@ function Projects() {
 
               {/* Project Details */}
               <div className="p-4">
-                <h3 className="text-lg md:text-xl font-semibold mb-2">
+                <h3 className="text-md md:text-lg font-semibold mb-2">
                   <a
                     href={project.url}
                     target="_blank"
