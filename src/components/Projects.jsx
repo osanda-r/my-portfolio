@@ -7,14 +7,16 @@ import pro4 from "../images/pro4.png";
 import pro5 from "../images/pro5.png";
 import pro6 from "../images/pro6.png";
 import pro7 from "../images/pro7.png";
+import pro8 from "../images/pro8.png";
 
 function Projects() {
   const projects = [
     {
       title: "EduCheck",
-      description: "A mobile app to track attendance.",
+      description:
+        "A mobile app to track attendance.You can download it from here.",
       image: pro1,
-      url: "https://github.com/osanda-r/EduCheck",
+      url: "https://drive.google.com/drive/folders/1AO8XJ7CL6xa9YKgHBEK22ZbIGk8AFT3_?usp=sharing",
     },
     {
       title: "Recipe Finder",
@@ -51,6 +53,12 @@ function Projects() {
       description: "UI/UX design for a fitness website.",
       image: pro7,
       url: "https://drive.google.com/drive/folders/1ZcSQXvqqGKfdTuDNUQDkNnEAmqBAzuSV?usp=sharing",
+    },
+    {
+      title: "Estate",
+      description: "Real estate website. for Home buyers.",
+      image: pro8,
+      url: "",
     },
   ];
 

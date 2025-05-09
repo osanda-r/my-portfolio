@@ -3,13 +3,12 @@ import React from "react";
 
 function Skills() {
   const skills = [
-    "React",
+    "React.js",
     "Java",
-    "Python",
     "MySQL",
+    "PHP",
     "JavaScript",
     "Tailwind CSS",
-    "Node.js",
     "HTML",
     "CSS",
   ];
