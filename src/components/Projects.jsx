@@ -8,9 +8,43 @@ import pro5 from "../images/pro5.png";
 import pro6 from "../images/pro6.png";
 import pro7 from "../images/pro7.png";
 import pro8 from "../images/pro8.png";
+import github_pro from "../images/github_pro.png";
 
 function Projects() {
+  
   const projects = [
+    {
+      title: "Smart Parcel Delivery System",
+      description:
+        " logistics management application to automate parcel scheduling and routing.",
+      image: github_pro,
+      url: "https://github.com/osanda-r/Smart-Parcel-Delivery-System/tree/main/DeliverySystem/src/main/java/com/logistics/delivery",
+    },
+    {
+      title: "Smart Parking Management System",
+      description:
+        "IoT-based Smart Parking Management System that automates parking operations,improves space utilization, reduces congestion, and enhances user convenience.",
+      image: github_pro,
+      url: "https://github.com/osanda-r/SmartParkingSystem",
+    },
+
+    {
+      title: "Artify",
+      description:
+        "ARTIFY Website is a full stack project that connects artisans with consumers, creates an inclusive marketplace for unique handmade products, and supports the growth of artisans globally.",
+      image: github_pro,
+      url: "https://github.com/Roshan-Sandaruwan/Artisan-Marketplace",
+    },
+
+    {
+      title: "Virtual Mouse",
+      description:
+        "AI-driven Virtual Mouse system that allows you to control your computer just with hand gestures – no physical mouse required.",
+      image: github_pro,
+      url: "https://github.com/osanda-r/virtualMouse/blob/main/main.py",
+    },
+
+  
     {
       title: "EduCheck",
       description:
