@@ -25,7 +25,7 @@ function Hero() {
         {/* Secondary Paragraph */}
         <p className="text-base md:text-md lg:text-lg text-slate-800 leading-relaxed">
           With hands-on experience in front-end development, Java-based mobile
-          applications, IoT systems and UI/UX design, I focus on building intuitive,
+          applications, IonT systems and UI/UX design, I focus on building intuitive,
           user-friendly, and scalable digital solutions. I enjoy exploring new
           coding techniques, staying updated with the latest trends, and pushing
           creative boundaries to transform ideas into impactful realities.
