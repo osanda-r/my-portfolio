@@ -3,12 +3,22 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-slate-800 text-white py-4 md:py-6 text-center rounded-md">
-      <div className="container mx-auto">
-        <p className="text-sm md:text-md">
-          &copy; {new Date().getFullYear()} Osanda Abeysinghe. All rights
-          reserved.
+    <footer className="bg-gradient-to-r from-blue-700 via-indigo-800 to-blue-900 text-white py-6 md:py-8 text-center shadow-inner mt-10">
+      <div className="container mx-auto flex flex-col items-center">
+        <p className="text-md md:text-lg font-semibold tracking-wide relative group">
+          <span className="inline-block group-hover:underline group-hover:decoration-wavy group-hover:decoration-2 transition-all duration-300">
+            &copy; {new Date().getFullYear()} Osanda Abeysinghe. All rights
+            reserved.
+          </span>
         </p>
+        <div className="mt-2 flex gap-3 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+          <a
+            href="#"
+            className="hover:text-blue-300 transition-colors duration-200 text-sm"
+          >
+            Back to Top
+          </a>
+        </div>
       </div>
     </footer>
   );

@@ -11,7 +11,6 @@ import pro8 from "../images/pro8.png";
 import github_pro from "../images/github_pro.png";
 
 function Projects() {
-  
   const projects = [
     {
       title: "Smart Parcel Delivery System",
@@ -44,7 +43,6 @@ function Projects() {
       url: "https://github.com/osanda-r/virtualMouse/blob/main/main.py",
     },
 
-  
     {
       title: "EduCheck",
       description:
@@ -97,42 +95,61 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-12 md:py-16 bg-slate-100">
+    <section
+      id="projects"
+      className="py-16 bg-gradient-to-br from-slate-50 to-slate-200"
+    >
       <div className="container mx-auto px-4">
         {/* Section Title */}
-        <h2 className="text-xl md:text-2xl font-bold text-center text-slate-700 mb-8">
-          Projects
+        <h2 className="text-2xl md:text-3xl font-extrabold text-center text-slate-800 mb-10 tracking-tight drop-shadow-lg">
+          My <span className="text-blue-600">Projects</span>
         </h2>
 
         {/* Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="group bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-transparent hover:border-blue-400 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer"
             >
-              {/* Project Image */}
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-44 sm:h-52 md:h-60 lg:h-64 xl:h-72 object-cover"
-              />
+              {/* Project Image with hover zoom */}
+              <div className="overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-48 md:h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
 
               {/* Project Details */}
-              <div className="p-4">
-                <h3 className="text-md md:text-lg font-semibold mb-2">
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-lg md:text-xl font-bold mb-2 text-slate-800 group-hover:text-blue-700 transition-colors duration-300">
+                  {project.url ? (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 decoration-blue-400 hover:decoration-2"
+                    >
+                      {project.title}
+                    </a>
+                  ) : (
+                    project.title
+                  )}
+                </h3>
+                <p className="text-gray-700 text-base md:text-md mb-4 flex-1">
+                  {project.description}
+                </p>
+                {project.url && (
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-700 hover:text-slate-950 transition"
+                    className="inline-block mt-auto bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-5 py-2 rounded-full shadow hover:scale-105 hover:from-indigo-500 hover:to-blue-600 transition-all duration-300 text-sm md:text-base focus:outline-none focus:ring-4 focus:ring-blue-300"
                   >
-                    {project.title}
+                    View Project
                   </a>
-                </h3>
-                <p className="text-gray-700 text-base md:text-md">
-                  {project.description}
-                </p>
+                )}
               </div>
             </div>
           ))}
