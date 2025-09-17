@@ -3,6 +3,11 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  min-height: 100vh;
+  /* fallback for browsers that don't support gradients */
+  background: #e0e7ff;
+  /* modern gradient background */
+  background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 50%, #c7d2fe 100%);
 }
 
 .logo {

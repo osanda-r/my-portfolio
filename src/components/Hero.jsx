@@ -1,11 +1,11 @@
 // src/components/Hero.jsx
 
 import React from "react";
-import my from "../images/my.PNG";
+import my from "../images/my2.PNG";
 
 function Hero() {
   return (
-    <section className="bg-gradient-to-br from-slate-100 to-slate-200 py-16 md:py-24 min-h-[80vh] flex items-center">
+    <section className="bg-gradient-to-br from-slate-100 to-slate-200 py-16 md:py-24 min-h-[80vh] flex items-center relative z-10">
       <div className="container mx-auto px-4 text-center flex flex-col items-center">
         {/* Profile Image - circular, shadow, border, hover effect */}
         <img
@@ -36,13 +36,22 @@ function Hero() {
           updated, and pushing creative boundaries.
         </p>
 
-        {/* Call to Action Button */}
-        <a
-          href="#projects"
-          className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:from-indigo-500 hover:to-blue-600 transition-all duration-300 text-lg mt-2 focus:outline-none focus:ring-4 focus:ring-blue-300"
-        >
-          View My Projects
-        </a>
+        {/* Call to Action Buttons */}
+        <div className="flex flex-col md:flex-row gap-4 mt-2">
+          <a
+            href="#projects"
+            className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:from-indigo-500 hover:to-blue-600 transition-all duration-300 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+          >
+            View My Projects
+          </a>
+          <a
+            href="/resume.pdf"
+            download
+            className="inline-block bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 text-lg focus:outline-none focus:ring-4 focus:ring-indigo-300"
+          >
+            Download Resume
+          </a>
+        </div>
       </div>
     </section>
   );

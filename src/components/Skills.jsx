@@ -10,66 +10,73 @@ import {
   FaCss3Alt,
   FaJs,
   FaDatabase,
+  FaGithub,
 } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiC } from "react-icons/si";
 
-// Optionally, you can add icons for each skill for more interactivity
-const skillData = [
+const skillGroups = [
   {
-    name: "Java",
-    color: "bg-yellow-100",
-    icon: <FaJava className="text-[#f89820]" />,
+    title: "Programming Languages",
+    skills: [
+      { name: "Java", icon: <FaJava className="text-[#f89820]" /> },
+      { name: "Python", icon: <FaPython className="text-[#3776ab]" /> },
+      { name: "C", icon: <SiC className="text-[#00599c]" /> },
+    ],
   },
   {
-    name: "Python",
-    color: "bg-green-100",
-    icon: <FaPython className="text-[#3776ab]" />,
-  },
-  { name: "C", color: "bg-blue-100", icon: <SiC className="text-[#00599c]" /> },
-  {
-    name: "React.js",
-    color: "bg-cyan-100",
-    icon: <FaReact className="text-[#61dafb]" />,
-  },
-  {
-    name: "Next.js",
-    color: "bg-gray-100",
-    icon: <SiNextdotjs className="text-black" />,
-  },
-  {
-    name: "Vue.js",
-    color: "bg-green-200",
-    icon: <FaVuejs className="text-[#42b883]" />,
+    title: "Web Development",
+    skills: [
+      { name: "React.js", icon: <FaReact className="text-[#61dafb]" /> },
+      { name: "Vue.js", icon: <FaVuejs className="text-[#42b883]" /> },
+      { name: "Next.js", icon: <SiNextdotjs className="text-black" /> },
+      { name: "JavaScript", icon: <FaJs className="text-[#f7df1e]" /> },
+      {
+        name: "Tailwind CSS",
+        icon: <SiTailwindcss className="text-[#38bdf8]" />,
+      },
+      { name: "HTML", icon: <FaHtml5 className="text-[#e34f26]" /> },
+      { name: "CSS", icon: <FaCss3Alt className="text-[#1572b6]" /> },
+      { name: "PHP", icon: <FaPhp className="text-[#777bb4]" /> },
+    ],
   },
   {
-    name: "MySQL",
-    color: "bg-blue-200",
-    icon: <FaDatabase className="text-[#00758f]" />,
+    title: "Database",
+    skills: [
+      { name: "MySQL", icon: <FaDatabase className="text-[#00758f]" /> },
+      { name: "MongoDB", icon: <FaDatabase className="text-green-600" /> },
+      {
+        name: "Firebase",
+        icon: <span className="text-[#ffca28] text-2xl font-bold">F</span>,
+      },
+    ],
   },
   {
-    name: "PHP",
-    color: "bg-indigo-100",
-    icon: <FaPhp className="text-[#777bb4]" />,
+    title: "Design Tools",
+    skills: [
+      {
+        name: "Figma",
+        icon: <span className="text-[#a259ff] text-2xl font-bold">F</span>,
+      },
+    ],
   },
   {
-    name: "JavaScript",
-    color: "bg-yellow-200",
-    icon: <FaJs className="text-[#f7df1e]" />,
+    title: "Technologies",
+    skills: [
+      {
+        name: "GIT",
+        icon: <span className="text-orange-500 text-2xl font-bold">G</span>,
+      },
+      { name: "GitHub", icon: <FaGithub className="text-black" /> },
+    ],
   },
   {
-    name: "Tailwind CSS",
-    color: "bg-teal-100",
-    icon: <SiTailwindcss className="text-[#38bdf8]" />,
-  },
-  {
-    name: "HTML",
-    color: "bg-orange-100",
-    icon: <FaHtml5 className="text-[#e34f26]" />,
-  },
-  {
-    name: "CSS",
-    color: "bg-blue-50",
-    icon: <FaCss3Alt className="text-[#1572b6]" />,
+    title: "Other",
+    skills: [
+      { name: "UI/UX design" },
+      { name: "REST APIs" },
+      { name: "Agile" },
+      { name: "Cloud basics" },
+    ],
   },
 ];
 
@@ -77,24 +84,36 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="py-28 min-h-[60vh] bg-gradient-to-br from-slate-50 to-slate-200"
+      className="py-28 min-h-[60vh] bg-gradient-to-br from-slate-50 to-slate-200 relative z-10"
     >
       <div className="container mx-auto">
         <h2 className="text-2xl md:text-3xl text-slate-800 font-extrabold text-center mb-10 tracking-tight drop-shadow-lg">
           My <span className="text-blue-600">Skills</span>
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-center">
-          {skillData.map((skill, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
+          {skillGroups.map((group, i) => (
             <div
-              key={idx}
-              className={`group ${skill.color} rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 transition-transform duration-300 hover:scale-110 hover:shadow-2xl cursor-pointer border-2 border-transparent hover:border-blue-400`}
+              key={i}
+              className="bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center"
             >
-              <span className="text-3xl md:text-4xl mb-2 transition-transform duration-300 group-hover:rotate-6">
-                {skill.icon}
-              </span>
-              <span className="text-md md:text-lg font-semibold text-slate-700 group-hover:text-blue-700 transition-colors duration-300">
-                {skill.name}
-              </span>
+              <h3 className="text-lg md:text-xl font-bold text-blue-700 mb-4 tracking-wide">
+                {group.title}
+              </h3>
+              <div className="flex flex-wrap justify-center gap-4">
+                {group.skills.map((skill, idx) => (
+                  <div
+                    key={idx}
+                    className="group bg-slate-100 rounded-xl px-4 py-2 flex items-center gap-2 shadow hover:scale-105 hover:shadow-xl transition-transform duration-300 border border-transparent hover:border-blue-400"
+                  >
+                    {skill.icon && (
+                      <span className="text-2xl md:text-3xl">{skill.icon}</span>
+                    )}
+                    <span className="text-md md:text-lg font-semibold text-slate-700 group-hover:text-blue-700 transition-colors duration-300">
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

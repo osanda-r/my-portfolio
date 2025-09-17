@@ -48,7 +48,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${
         scrolled ? "backdrop-blur-md bg-white/70 shadow-lg" : "bg-transparent"
       }`}
     >
@@ -94,16 +94,16 @@ function Navbar() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center z-[10000]">
           <button
-            className="bg-white/80 border border-slate-200 shadow px-3 py-2 rounded-lg hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="bg-white/90 border-2 border-blue-200 shadow-lg px-4 py-2 rounded-xl hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
             onClick={() => setShowMenu(!showMenu)}
             aria-label="Toggle menu"
           >
             {showMenu ? (
-              <X size={28} className="text-blue-700" />
+              <X size={32} className="text-blue-700" />
             ) : (
-              <Menu size={28} className="text-blue-700" />
+              <Menu size={32} className="text-blue-700" />
             )}
           </button>
         </div>
@@ -111,12 +111,12 @@ function Navbar() {
         {/* Mobile Dropdown Menu */}
         {showMenu && (
           <div
-            className="fixed inset-0 z-40 bg-black/40"
+            className="fixed inset-0 z-[9998] bg-black/40"
             onClick={() => setShowMenu(false)}
           ></div>
         )}
         <div
-          className={`fixed top-0 right-0 z-50 w-64 h-full bg-white shadow-lg transform transition-transform duration-300 md:hidden ${
+          className={`fixed top-0 right-0 z-[10001] w-64 h-full bg-white shadow-2xl transform transition-transform duration-300 md:hidden ${
             showMenu ? "translate-x-0" : "translate-x-full"
           }`}
         >

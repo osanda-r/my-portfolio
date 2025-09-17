@@ -6,7 +6,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100"
+      className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100 relative z-10"
     >
       <div className="container mx-auto flex justify-center items-center min-h-[40vh]">
         <div className="bg-white/80 rounded-3xl shadow-2xl p-10 md:p-16 w-full max-w-2xl text-center border-2 border-blue-100">
