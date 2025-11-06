@@ -84,7 +84,7 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="py-28 min-h-[60vh] bg-gradient-to-br from-slate-50 to-slate-200 relative z-10"
+      className="py-28 min-h-[60vh] relative z-10"
     >
       <div className="container mx-auto">
         <h2 className="text-2xl md:text-3xl text-slate-800 font-extrabold text-center mb-10 tracking-tight drop-shadow-lg">
