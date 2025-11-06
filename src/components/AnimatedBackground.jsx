@@ -2,16 +2,15 @@
 import React, { useEffect, useRef } from "react";
 
 /**
- * AnimatedBackground
- * - Full-screen canvas with subtle floating particles
- * - Light CPU/GPU usage, adapts to screen size
- * - Parallax reacts to mouse movement
+ * AnimatedBackground — Code Syntax Drift
+ * - Full-screen canvas rendering gently drifting code tokens (keywords, braces, operators)
+ * - Subtle motion with parallax; low visual noise for readability behind content
  * - Respects prefers-reduced-motion
  */
 export default function AnimatedBackground() {
   const canvasRef = useRef(null);
   const rafRef = useRef(0);
-  const particlesRef = useRef([]);
+  const itemsRef = useRef([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const reduceMotion = useRef(false);
 
@@ -28,7 +27,7 @@ export default function AnimatedBackground() {
     function handleResize() {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-      spawnParticles();
+      spawnItems();
     }
 
     function handleMouseMove(e) {
@@ -39,45 +38,72 @@ export default function AnimatedBackground() {
     window.addEventListener("resize", handleResize);
     window.addEventListener("mousemove", handleMouseMove);
 
-    const density = Math.min(0.00012 * width * height, 120); // cap particle count
+    // density scales with area but is capped for performance
+    const baseDensity = 0.00005; // lower than particles for subtlety
+    function getCount() {
+      const count = Math.min(Math.floor(baseDensity * width * height), 90);
+      return reduceMotion.current ? Math.floor(count * 0.4) : count;
+    }
 
-    function spawnParticles() {
-      const count = Math.floor(density);
+    const tokenPalette = [
+      // keywords
+      { text: "const", color: "rgba(99,102,241,0.55)" }, // indigo-500
+      { text: "let", color: "rgba(99,102,241,0.55)" },
+      { text: "</>", color: "rgba(99,102,241,0.55)" },
+      { text: "return", color: "rgba(99,102,241,0.55)" },
+      // types / identifiers
+      { text: "<div>", color: "rgba(56,189,248,0.45)" }, // sky-400
+      { text: "props", color: "rgba(148,163,184,0.5)" }, // slate-400
+      { text: "state", color: "rgba(148,163,184,0.5)" },
+      // strings / numbers
+      { text: '"hello"', color: "rgba(244,114,182,0.45)" }, // pink-400
+      { text: "101", color: "rgba(250,204,21,0.45)" }, // yellow-400
+      // operators / braces
+      { text: "()", color: "rgba(148,163,184,0.45)" },
+      { text: "{}", color: "rgba(148,163,184,0.45)" },
+      { text: "=>", color: "rgba(148,163,184,0.45)" },
+      { text: "===", color: "rgba(148,163,184,0.45)" },
+      { text: "[]", color: "rgba(148,163,184,0.45)" },
+    ];
+
+    function spawnItems() {
+      const count = getCount();
       const pr = window.devicePixelRatio || 1;
       ctx.setTransform(pr, 0, 0, pr, 0, 0);
       canvas.width = Math.floor(width * pr);
       canvas.height = Math.floor(height * pr);
       ctx.scale(pr, pr);
 
-      particlesRef.current = new Array(count).fill(0).map(() => newParticle());
+      itemsRef.current = new Array(count).fill(0).map(() => newToken());
     }
 
-    function newParticle() {
-      // Colors tuned to your gradient palette (blue/indigo/slate)
-      const palette = [
-        "rgba(59,130,246,0.4)", // blue-500
-        "rgba(99,102,241,0.35)", // indigo-500
-        "rgba(14,165,233,0.3)", // sky-500
-        "rgba(2,132,199,0.25)", // cyan-600
-        "rgba(148,163,184,0.25)", // slate-400
-      ];
-      const size = rand(1.2, 3.2);
-      const speed = rand(0.15, 0.6);
-      const angle = rand(0, Math.PI * 2);
-      return {
-        x: rand(0, width),
-        y: rand(0, height),
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        size,
-        color: palette[Math.floor(rand(0, palette.length))],
-        wobble: rand(0.5, 1.5),
-        wobblePhase: rand(0, Math.PI * 2),
-      };
-    }
-
-    function rand(min, max) {
+    function random(min, max) {
       return Math.random() * (max - min) + min;
+    }
+
+    function pick(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function newToken() {
+      const t = pick(tokenPalette);
+      const size = random(12, 20); // px
+      const speed = random(0.12, 0.45);
+      const angle = random(-Math.PI / 8, Math.PI / 8); // slight tilt
+      const dir = Math.random() < 0.5 ? -1 : 1;
+      return {
+        x: random(0, width),
+        y: random(0, height),
+        vx: dir * speed * random(0.4, 1),
+        vy: speed,
+        size,
+        text: t.text,
+        color: t.color,
+        rotate: angle,
+        wobble: random(0.3, 1.2),
+        wobblePhase: random(0, Math.PI * 2),
+        alpha: random(0.5, 0.95),
+      };
     }
 
     function step() {
@@ -86,42 +112,52 @@ export default function AnimatedBackground() {
       const { x: mx, y: my } = mouseRef.current;
       const cx = width / 2;
       const cy = height / 2;
-      const parallaxX = ((mx || cx) - cx) / 50; // subtle parallax shift
-      const parallaxY = ((my || cy) - cy) / 50;
+      const parallaxX = ((mx || cx) - cx) / 60; // very subtle
+      const parallaxY = ((my || cy) - cy) / 60;
 
-      const particles = particlesRef.current;
+      const items = itemsRef.current;
 
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        // update
+      for (let i = 0; i < items.length; i++) {
+        const it = items[i];
+
         if (!reduceMotion.current) {
-          p.x += p.vx;
-          p.y += p.vy;
-          p.wobblePhase += 0.015 * p.wobble;
+          it.x += it.vx;
+          it.y += it.vy;
+          it.wobblePhase += 0.012 * it.wobble;
         }
 
-        // Wrap around edges for an infinite flow effect
-        if (p.x < -10) p.x = width + 10;
-        if (p.x > width + 10) p.x = -10;
-        if (p.y < -10) p.y = height + 10;
-        if (p.y > height + 10) p.y = -10;
+        // wrap around
+        const margin = 20;
+        if (it.x < -margin) it.x = width + margin;
+        if (it.x > width + margin) it.x = -margin;
+        if (it.y > height + margin) {
+          // respawn near the top to keep flow downward
+          it.y = -margin;
+          it.x = random(0, width);
+        }
 
         // draw
-        const wobbleX = Math.cos(p.wobblePhase) * 1.2;
-        const wobbleY = Math.sin(p.wobblePhase) * 1.2;
-        const drawX = p.x + parallaxX + wobbleX;
-        const drawY = p.y + parallaxY + wobbleY;
+        const wobbleX = Math.cos(it.wobblePhase) * 1.1;
+        const wobbleY = Math.sin(it.wobblePhase) * 0.6;
+        const drawX = it.x + parallaxX + wobbleX;
+        const drawY = it.y + parallaxY + wobbleY;
 
-        ctx.beginPath();
-        ctx.fillStyle = p.color;
-        ctx.arc(drawX, drawY, p.size, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.save();
+        ctx.globalAlpha = it.alpha;
+        ctx.translate(drawX, drawY);
+        ctx.rotate(it.rotate);
+        ctx.fillStyle = it.color;
+        ctx.font = `${it.size}px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(it.text, 0, 0);
+        ctx.restore();
       }
 
       rafRef.current = requestAnimationFrame(step);
     }
 
-    spawnParticles();
+    spawnItems();
     rafRef.current = requestAnimationFrame(step);
 
     return () => {
@@ -134,8 +170,8 @@ export default function AnimatedBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10">
       <canvas ref={canvasRef} className="w-full h-full" />
-      {/* optional radial vignette for depth */}
-      <div className="" />
+      {/* subtle radial vignette for depth */}
+      <div />
     </div>
   );
 }

@@ -94,7 +94,7 @@ function Skills() {
           {skillGroups.map((group, i) => (
             <div
               key={i}
-              className="bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center"
+              className="bg-blue-50/80 rounded-2xl shadow-lg p-6 flex flex-col items-center"
             >
               <h3 className="text-lg md:text-xl font-bold text-blue-700 mb-4 tracking-wide">
                 {group.title}
