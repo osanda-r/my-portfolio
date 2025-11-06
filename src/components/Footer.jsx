@@ -3,7 +3,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-transparent text-white py-6 md:py-8 text-center shadow-inner mt-10 relative z-10">
+    <footer className="bg-[#1e3a8a]/80 text-white py-6 md:py-8 text-center shadow-inner mt-10 relative z-10">
       <div className="container mx-auto flex flex-col items-center">
         <p className="text-md md:text-lg font-semibold tracking-wide relative group">
           <span className="inline-block group-hover:underline group-hover:decoration-wavy group-hover:decoration-2 transition-all duration-300">

@@ -5,7 +5,7 @@ import my from "../images/my2.PNG";
 
 function Hero() {
   return (
-    <section className="bg-gradient-to-br from-slate-100 to-slate-200 py-16 md:py-24 min-h-[80vh] flex items-center relative z-10">
+    <section className=" py-16 md:py-24 min-h-[80vh] flex items-center relative z-10">
       <div className="container mx-auto px-4 text-center flex flex-col items-center">
         {/* Profile Image - circular, shadow, border, hover effect */}
         <img

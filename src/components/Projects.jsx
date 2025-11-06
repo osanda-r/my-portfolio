@@ -97,7 +97,7 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="py-16 bg-gradient-to-br from-slate-50 to-slate-200 relative z-10"
+      className="py-16  relative z-10"
     >
       <div className="container mx-auto px-4">
         {/* Section Title */}
