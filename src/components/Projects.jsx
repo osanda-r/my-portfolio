@@ -95,10 +95,7 @@ function Projects() {
   ];
 
   return (
-    <section
-      id="projects"
-      className="py-16  relative z-10"
-    >
+    <section id="projects" className="py-16  relative z-10">
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <h2 className="text-2xl md:text-3xl font-extrabold text-center text-slate-800 mb-10 tracking-tight drop-shadow-lg">
@@ -110,7 +107,7 @@ function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-transparent hover:border-blue-400 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer"
+              className="group bg-blue-50/80 rounded-3xl shadow-xl overflow-hidden border-2 border-transparent hover:border-blue-400 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer"
             >
               {/* Project Image with hover zoom */}
               <div className="overflow-hidden">
