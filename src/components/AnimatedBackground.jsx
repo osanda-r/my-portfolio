@@ -57,7 +57,7 @@ export default function AnimatedBackground() {
       { text: "state", color: "rgba(148,163,184,0.5)" },
       // strings / numbers
       { text: '"hello"', color: "rgba(244,114,182,0.45)" }, // pink-400
-      { text: "101", color: "rgba(250,204,21,0.45)" }, // yellow-400
+      { text: "404", color: "rgba(250,204,21,0.45)" }, // yellow-400
       // operators / braces
       { text: "()", color: "rgba(148,163,184,0.45)" },
       { text: "{}", color: "rgba(148,163,184,0.45)" },
