@@ -28,7 +28,7 @@ const skillGroups = [
     skills: [
       { name: "React.js", icon: <FaReact className="text-[#61dafb]" /> },
       { name: "Vue.js", icon: <FaVuejs className="text-[#42b883]" /> },
-      { name: "Next.js", icon: <SiNextdotjs className="text-black" /> },
+      { name: "Next.js", icon: <SiNextdotjs className="text-slate-200" /> },
       { name: "JavaScript", icon: <FaJs className="text-[#f7df1e]" /> },
       {
         name: "Tailwind CSS",
@@ -66,7 +66,7 @@ const skillGroups = [
         name: "GIT",
         icon: <span className="text-orange-500 text-2xl font-bold">G</span>,
       },
-      { name: "GitHub", icon: <FaGithub className="text-black" /> },
+      { name: "GitHub", icon: <FaGithub className="text-slate-200" /> },
     ],
   },
   {
@@ -82,33 +82,30 @@ const skillGroups = [
 
 function Skills() {
   return (
-    <section
-      id="skills"
-      className="py-28 min-h-[60vh] relative z-10"
-    >
+    <section id="skills" className="py-28 min-h-[60vh] relative z-10">
       <div className="container mx-auto">
-        <h2 className="text-2xl md:text-3xl text-slate-800 font-extrabold text-center mb-10 tracking-tight drop-shadow-lg">
-          My <span className="text-blue-600">Skills</span>
+        <h2 className="text-2xl md:text-3xl text-white font-extrabold text-center mb-10 tracking-tight drop-shadow-lg">
+          My <span className="accent-text">Skills</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
           {skillGroups.map((group, i) => (
             <div
               key={i}
-              className="bg-blue-50/80 rounded-2xl shadow-lg p-6 flex flex-col items-center"
+              className="surface rounded-2xl shadow-lg p-6 flex flex-col items-center"
             >
-              <h3 className="text-lg md:text-xl font-bold text-blue-700 mb-4 tracking-wide">
+              <h3 className="text-lg md:text-xl font-bold text-indigo-300 mb-4 tracking-wide">
                 {group.title}
               </h3>
               <div className="flex flex-wrap justify-center gap-4">
                 {group.skills.map((skill, idx) => (
                   <div
                     key={idx}
-                    className="group bg-slate-100 rounded-xl px-4 py-2 flex items-center gap-2 shadow hover:scale-105 hover:shadow-xl transition-transform duration-300 border border-transparent hover:border-blue-400"
+                    className="group bg-[#0b1226]/60 rounded-xl px-4 py-2 flex items-center gap-2 shadow hover:scale-105 hover:shadow-xl transition-transform duration-300 border border-transparent hover:border-[#6d28d9]/40"
                   >
                     {skill.icon && (
                       <span className="text-2xl md:text-3xl">{skill.icon}</span>
                     )}
-                    <span className="text-md md:text-lg font-semibold text-slate-700 group-hover:text-blue-700 transition-colors duration-300">
+                    <span className="text-md md:text-lg font-semibold text-slate-200 group-hover:text-indigo-300 transition-colors duration-300">
                       {skill.name}
                     </span>
                   </div>

@@ -49,7 +49,7 @@ function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${
-        scrolled ? "backdrop-blur-md bg-white/70 shadow-lg" : "bg-transparent"
+        scrolled ? "backdrop-blur-md surface shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex justify-between items-center py-3 px-4 md:px-8">
@@ -74,15 +74,17 @@ function Navbar() {
               href={`#${item.id}`}
               onClick={(e) => handleNavClick(e, item.id)}
               className={`px-3 py-1 rounded-lg relative transition-colors duration-200
-                hover:bg-blue-100 hover:text-blue-700
+                hover:bg-indigo-900/60 hover:text-indigo-300
                 ${
-                  active === item.id ? "text-blue-700 font-bold" : "text-black"
+                  active === item.id
+                    ? "text-indigo-300 font-semibold"
+                    : "text-slate-200"
                 }`}
             >
               {item.label}
               <span
                 className={
-                  "absolute left-1/2 -translate-x-1/2 -bottom-0.5 h-0.5 w-8 rounded-full bg-blue-500 transition-all duration-300 " +
+                  "absolute left-1/2 -translate-x-1/2 -bottom-0.5 h-0.5 w-8 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 transition-all duration-300 " +
                   (active === item.id
                     ? "opacity-100 scale-100"
                     : "opacity-0 scale-0")
@@ -96,14 +98,14 @@ function Navbar() {
         {/* Mobile Navigation */}
         <div className="md:hidden flex items-center z-[10000]">
           <button
-            className="bg-white/90 border-2 border-blue-200 shadow-lg px-4 py-2 rounded-xl hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="bg-[#0b1226]/80 border border-indigo-800 px-4 py-2 rounded-xl hover:bg-[#0b1226]/60 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-600"
             onClick={() => setShowMenu(!showMenu)}
             aria-label="Toggle menu"
           >
             {showMenu ? (
-              <X size={32} className="text-blue-700" />
+              <X size={32} className="text-indigo-300" />
             ) : (
-              <Menu size={32} className="text-blue-700" />
+              <Menu size={32} className="text-indigo-300" />
             )}
           </button>
         </div>
@@ -116,13 +118,13 @@ function Navbar() {
           ></div>
         )}
         <div
-          className={`fixed top-0 right-0 z-[10001] w-64 h-full bg-white shadow-2xl transform transition-transform duration-300 md:hidden ${
+          className={`fixed top-0 right-0 z-[10001] w-64 h-full surface shadow-2xl transform transition-transform duration-300 md:hidden ${
             showMenu ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="flex justify-end p-4">
             <button onClick={() => setShowMenu(false)} aria-label="Close menu">
-              <X size={28} className="text-blue-700" />
+              <X size={28} className="text-indigo-300" />
             </button>
           </div>
           <nav className="flex flex-col items-center gap-4 mt-8 text-lg font-medium">
@@ -135,17 +137,17 @@ function Navbar() {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
-                className={`w-full text-center px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-700 transition-colors duration-200
+                className={`w-full text-center px-3 py-2 rounded-lg hover:bg-indigo-900/60 hover:text-indigo-300 transition-colors duration-200
                   ${
                     active === item.id
-                      ? "text-blue-700 font-bold"
-                      : "text-black"
+                      ? "text-indigo-300 font-semibold"
+                      : "text-slate-200"
                   }`}
               >
                 {item.label}
                 <span
                   className={
-                    "block mx-auto mt-1 h-0.5 w-8 rounded-full bg-blue-500 transition-all duration-300 " +
+                    "block mx-auto mt-1 h-0.5 w-8 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 transition-all duration-300 " +
                     (active === item.id
                       ? "opacity-100 scale-100"
                       : "opacity-0 scale-0")
